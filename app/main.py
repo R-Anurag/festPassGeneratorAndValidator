@@ -5,9 +5,11 @@ from barcode.writer import ImageWriter
 from fpdf import FPDF
 import requests
 from firebase_admin import credentials, firestore, initialize_app
+from flask_cors import CORS
 
-# Initialize Flask app
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
+
 
 # Initialize Firebase
 cred = credentials.Certificate("festPassKey.json")
