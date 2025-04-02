@@ -4,6 +4,7 @@ certifi==2024.6.2
 charset-normalizer==3.3.2
 click==8.1.7
 Flask==3.0.3
+flask-cors
 firebase-admin==6.0.0
 python-barcode==0.14.0
 fpdf==1.7.2
