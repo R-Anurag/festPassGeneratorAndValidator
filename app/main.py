@@ -16,6 +16,7 @@ db = firestore.client()
 
 @app.route('/generate_pass', methods=['POST'])
 def generate_pass():
+    print("Received data:", request.json)
     try:
         # Step 1: Get Data from Webhook
         data = request.json
