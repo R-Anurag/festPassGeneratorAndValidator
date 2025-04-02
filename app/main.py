@@ -4,17 +4,22 @@ import barcode
 from barcode.writer import ImageWriter
 from fpdf import FPDF
 import requests
+import json
 from firebase_admin import credentials, firestore, initialize_app
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-
 # Initialize Firebase
-cred = credentials.Certificate("festPassKey.json")
-initialize_app(cred)
-db = firestore.client()
+firebase_credentials = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")  # Fetch credentials from environment variables
+if firebase_credentials:
+    cred = credentials.Certificate(json.loads(firebase_credentials))  # Parse JSON from env variable
+    initialize_app(cred)
+    db = firestore.client()
+else:
+    raise ValueError("Firebase credentials not found in environment variables.")
 
 @app.route('/generate_pass', methods=['POST'])
 def generate_pass():
