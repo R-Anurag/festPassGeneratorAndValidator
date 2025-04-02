@@ -31,6 +31,7 @@ def generate_pass():
         name = data.get('name')
         phone = data.get('phone')
         picture_url = data.get('picture')  # URL to the user's picture
+        
 
         if not name or not phone:
             return jsonify({"error": "Missing required form fields"}), 400
