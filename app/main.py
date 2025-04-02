@@ -8,6 +8,7 @@ import json
 from firebase_admin import credentials, firestore, initialize_app
 from flask_cors import CORS
 import os
+from PIL import ImageFont  # Adjusting font handling for errors
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
